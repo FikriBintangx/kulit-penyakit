@@ -1,0 +1,348 @@
+{
+  "metadata": {
+    "project_name": "Sistem Pakar Identifikasi Kemungkinan Pemicu Alergi dan Iritasi Kulit",
+    "method": "Forward Chaining (Penalaran Maju)",
+    "version": "3.0.0-user-friendly-expanded",
+    "description": "Basis pengetahuan sistem pakar skrining awal keluhan kulit dengan bahasa ramah pengguna, mencakup 16 kelompok pemicu terlengkap dan protokol keselamatan.",
+    "standards_and_references": [
+      "Perhimpunan Dokter Spesialis Dermatologi, Venereologi, dan Estetika (PERDOSKI)",
+      "European Baseline Series (EBS) for Contact Dermatitis",
+      "North American Contact Dermatitis Group (NACDG)",
+      "American Academy of Dermatology (AAD)",
+      "DermNet NZ (Clinical Dermatology Resource)",
+      "World Allergy Organization (WAO) Guidelines on Anaphylaxis and Urticaria"
+    ]
+  },
+  "emergency_red_flags": [
+    {
+      "id": "F01",
+      "gejala": "Sesak napas, napas berbunyi mengi, atau rasa tercekat di tenggorokan",
+      "tingkat": "Darurat Kritis",
+      "bahaya": "Risiko anafilaksis (reaksi alergi berat yang menyumbat jalan napas)",
+      "tindakan": "Segera panggil ambulans 112/118 atau bawa ke IGD rumah sakit terdekat."
+    },
+    {
+      "id": "F02",
+      "gejala": "Bibir, lidah, atau langit-langit mulut membengkak tebal (angioedema)",
+      "tingkat": "Darurat Kritis",
+      "bahaya": "Pembengkakan dapat menjalar menutup saluran pernapasan",
+      "tindakan": "Segera ke instalasi gawat darurat untuk penanganan medis darurat."
+    },
+    {
+      "id": "F03",
+      "gejala": "Pusing berat mendadak, pandangan gelap, lemas lunglai, atau pingsan",
+      "tingkat": "Darurat Kritis",
+      "bahaya": "Penurunan tekanan darah drastis (syok alergi)",
+      "tindakan": "Baringkan pasien dengan posisi kaki lebih tinggi, jangan beri minum saat pingsan, panggil bantuan medis."
+    },
+    {
+      "id": "F04",
+      "gejala": "Ruam merah merata di tubuh disertai demam tinggi di atas 38,5°C",
+      "tingkat": "Perlu Penanganan Cepat",
+      "bahaya": "Tanda infeksi sistemik atau reaksi obat berat",
+      "tindakan": "Periksakan ke dokter spesialis kulit dalam waktu kurang dari 24 jam."
+    },
+    {
+      "id": "F05",
+      "gejala": "Kulit melepuh luas seperti luka bakar, mudah terkelupas, atau sariawan parah pada bibir dan mata",
+      "tingkat": "Perlu Penanganan Cepat",
+      "bahaya": "Kecurigaan sindrom gawat kulit (seperti Stevens-Johnson Syndrome)",
+      "tindakan": "Wajib rawat inap dan evaluasi intensif dokter spesialis kulit."
+    }
+  ],
+  "trigger_groups": [
+    {
+      "id": "TR01",
+      "nama": "Logam & Aksesori Sehari-hari",
+      "contoh_benda": [
+        "Jam tangan rantai logam",
+        "Anting & kalung imitasi",
+        "Gesper ikat pinggang",
+        "Kancing logam celana jeans",
+        "Bingkai kacamata logam"
+      ],
+      "senyawa_aktif": [
+        "Nikel (Nickel sulfate)",
+        "Kobalt",
+        "Kromium"
+      ],
+      "ciri_khas": "Ruam merah gatal membingkai pas bentuk benda logam setelah berhari-hari pemakaian. Keringat memicu pelepasan ion logam ke kulit.",
+      "kategori": "Alergi Kontak"
+    },
+    {
+      "id": "TR02",
+      "nama": "Kosmetik, Skincare & Riasan Wajah",
+      "contoh_benda": [
+        "Serum wajah",
+        "Krim pemutih / pelembap",
+        "Foundation / cushion",
+        "Maskara & eyeliner",
+        "Tabir surya (sunscreen)"
+      ],
+      "senyawa_aktif": [
+        "Methylisothiazolinone (pengawet MI/MCI)",
+        "Paraben",
+        "Asam AHA/BHA tinggi",
+        "Retinol pekat"
+      ],
+      "ciri_khas": "Wajah kemerahan, panas menyengat, atau bruntusan gatal setelah 1-3 hari mencoba produk baru. Membaik setelah produk dihentikan.",
+      "kategori": "Alergi atau Iritasi Kontak"
+    },
+    {
+      "id": "TR03",
+      "nama": "Sabun Cuci & Pembersih Rumah Tangga",
+      "contoh_benda": [
+        "Deterjen pakaian bubuk/cair",
+        "Sabun cuci piring",
+        "Cairan pemutih pakaian",
+        "Karbol / pembersih lantai"
+      ],
+      "senyawa_aktif": [
+        "Sodium Lauryl Sulfate (SLS)",
+        "Klorin",
+        "Asam klorida encer",
+        "Kationik surfaktan"
+      ],
+      "ciri_khas": "Telapak tangan dan sela jari terasa sangat perih, kering, kasar, mengelupas, bahkan retak berdarah saat kena air. Jarang menyebar ke tempat lain.",
+      "kategori": "Iritasi Kontak Primer (Bukan Alergi)"
+    },
+    {
+      "id": "TR04",
+      "nama": "Sarung Tangan Karet & Produk Lateks",
+      "contoh_benda": [
+        "Sarung tangan karet medis/kebersihan",
+        "Karet gelang",
+        "Kondom lateks",
+        "Spons makeup berbahan lateks"
+      ],
+      "senyawa_aktif": [
+        "Akselerator kimia karet (Thiuram, Dithiocarbamate, IPPD)",
+        "Protein lateks pohon Hevea"
+      ],
+      "ciri_khas": "Punggung tangan gatal hebat, merah, dan muncul bintik-bintik berair setelah memakai sarung tangan karet saat bekerja.",
+      "kategori": "Alergi Kontak"
+    },
+    {
+      "id": "TR05",
+      "nama": "Tanaman Liar, Getah & Dedaunan",
+      "contoh_benda": [
+        "Getah mangga liar",
+        "Tanaman hias sri rejeki (Dieffenbachia)",
+        "Rumput liar halaman",
+        "Getah kaktus"
+      ],
+      "senyawa_aktif": [
+        "Urushiol",
+        "Kalsium oksalat",
+        "Furanokumarin (pada jeruk/seledri + matahari)"
+      ],
+      "ciri_khas": "Bekas goresan bergaris lurus kemerahan, lenting berair, dan rasa perih setelah berkebun atau beraktivitas luar ruangan.",
+      "kategori": "Fitofotodermatitis & Alergi Tanaman"
+    },
+    {
+      "id": "TR06",
+      "nama": "Parfum, Deodoran & Minyak Esensial",
+      "contoh_benda": [
+        "Parfum semprot",
+        "Deodoran roll-on / spray",
+        "Minyak kayu putih murni",
+        "Minyak atsiri aromaterapi (diffuser/oles)"
+      ],
+      "senyawa_aktif": [
+        "Fragrance Mix I & II",
+        "Balsam of Peru",
+        "Linalool",
+        "Limonene"
+      ],
+      "ciri_khas": "Gatal dan bercak merah pada lipatan ketiak, leher, atau pergelangan tangan tempat disemprotkan wewangian.",
+      "kategori": "Alergi Kontak Pewangi"
+    },
+    {
+      "id": "TR07",
+      "nama": "Pakaian, Serat Kain & Pewarna Tekstil",
+      "contoh_benda": [
+        "Pakaian baru belum dicuci",
+        "Celana jeans warna pekat",
+        "Kain sintetis ketat (poliester/spandeks)",
+        "Pakaian dalam nilon"
+      ],
+      "senyawa_aktif": [
+        "Pewarna azo disperse",
+        "Resin formaldehida anti-kusut"
+      ],
+      "ciri_khas": "Gatal di badan, paha, atau punggung terutama saat berkeringat di area yang tergesek kain baru.",
+      "kategori": "Alergi Tekstil & Gesekan"
+    },
+    {
+      "id": "TR08",
+      "nama": "Lem Perekat, Kuku Tiruan & Eyelash Extension",
+      "contoh_benda": [
+        "Lem bulu mata sambungan",
+        "Lem kuku palsu akrilik",
+        "Plester luka (hansaplast)",
+        "Lem perban medis"
+      ],
+      "senyawa_aktif": [
+        "Ethyl cyanoacrylate",
+        "Metakrilat",
+        "Kolofoni (getah pinus/rosin)"
+      ],
+      "ciri_khas": "Kelopak mata bengkak merah setelah pasang bulu mata, atau kulit merah melingkar pas di bekas tempelan plester luka.",
+      "kategori": "Alergi Kontak Perekat"
+    },
+    {
+      "id": "TR09",
+      "nama": "Cat Rambut & Tato Henna Hitam",
+      "contoh_benda": [
+        "Cat rambut hitam/cokelat permanen",
+        "Tato temporer henna hitam di tempat wisata"
+      ],
+      "senyawa_aktif": [
+        "p-Phenylenediamine (PPD)",
+        "Resorsinol"
+      ],
+      "ciri_khas": "Kepala panas gatal, kelopak mata dan telinga bengkak 1-3 hari setelah mengecat rambut. PPD adalah salah satu alergen terkuat.",
+      "kategori": "Alergi Kontak Kuat"
+    },
+    {
+      "id": "TR10",
+      "nama": "Makanan & Minuman Pemicu Biduran (Urtikaria)",
+      "contoh_benda": [
+        "Seafood (udang, cumi, kepiting, kerang)",
+        "Telur ayam",
+        "Kacang tanah",
+        "Susu sapi",
+        "Ikan laut yang kurang segar (histamin tinggi)"
+      ],
+      "senyawa_aktif": [
+        "Tropomiosin",
+        "Histamin bebas",
+        "Kasein",
+        "Ovalbumin"
+      ],
+      "ciri_khas": "Bentol-bentol lebar merah menyebar di seluruh tubuh dalam waktu 30 menit hingga 2 jam paska makan. Tiap bentol hilang dalam kurang dari 24 jam.",
+      "kategori": "Alergi Makanan / Urtikaria Akut"
+    },
+    {
+      "id": "TR11",
+      "nama": "Tungau Kasur & Bulu Hewan Peliharaan",
+      "contoh_benda": [
+        "Kasur atau bantal kapuk/busa berdebu",
+        "Karpet bulu tebal",
+        "Bulu dan ludah kucing",
+        "Serpihan kulit anjing"
+      ],
+      "senyawa_aktif": [
+        "Protein feses tungau Dermatophagoides",
+        "Protein Fel d 1 saliva kucing"
+      ],
+      "ciri_khas": "Gatal-gatal kambuhan terutama saat berbaring di kasur lama atau saat bermain dengan hewan berbulu, disertai bersin-bersin pagi hari.",
+      "kategori": "Alergen Lingkungan Rumah"
+    },
+    {
+      "id": "TR12",
+      "nama": "Suhu Dingin, Keringat & Cuaca",
+      "contoh_benda": [
+        "Mandi air es / udara AC dingin",
+        "Keringat saat berolahraga di bawah terik matahari",
+        "Paparan sinar matahari langsung"
+      ],
+      "senyawa_aktif": [
+        "Pelepasan histamin fisik",
+        "Urtikaria dingin / kolinergik"
+      ],
+      "ciri_khas": "Bentol merah gatal timbul saat kehujanan/kena AC dingin, atau bintik merah kecil gatal saat berkeringat deras (biang keringat atau biduran panas).",
+      "kategori": "Faktor Fisik / Cuaca"
+    },
+    {
+      "id": "TR13",
+      "nama": "Gigitan & Cairan Racun Serangga",
+      "contoh_benda": [
+        "Kumbang Tomcat (Paederus)",
+        "Kutu kasur (bed bugs)",
+        "Semut api",
+        "Nyamuk / lebah"
+      ],
+      "senyawa_aktif": [
+        "Pederin (cairan toksin tomcat)",
+        "Asam format",
+        "Enzim saliva serangga"
+      ],
+      "ciri_khas": "Kulit tiba-tiba perih melepuh seperti disiram air panas berbentuk garis (efek cairan Tomcat) atau bentol bergerombol gatal (kutu kasur).",
+      "kategori": "Toksin Serangga (Dermatitis Venenata)"
+    },
+    {
+      "id": "TR14",
+      "nama": "Salep Obat Oles & Balsem Panas",
+      "contoh_benda": [
+        "Salep antibiotik bebas yang sering diulang",
+        "Krim pereda nyeri sendi",
+        "Balsem / minyak gosok panas"
+      ],
+      "senyawa_aktif": [
+        "Neomisin sulfat",
+        "Basitrasin",
+        "Metil salisilat konsentrasi tinggi",
+        "Kapsaisin"
+      ],
+      "ciri_khas": "Luka bukannya sembuh malah semakin merah, gatal, dan timbul lenting berair paska diolesi salep tertentu berulang kali.",
+      "kategori": "Alergi Obat Topikal"
+    },
+    {
+      "id": "TR15",
+      "nama": "Produk Bayi & Ruam Popok",
+      "contoh_benda": [
+        "Popok sekali pakai (diaper)",
+        "Minyak telon",
+        "Tisu basah berpewangi",
+        "Bedak tabur"
+      ],
+      "senyawa_aktif": [
+        "Amonia urin + enzim feses",
+        "Minyak adas/kayu putih",
+        "Pengawet tisu basah"
+      ],
+      "ciri_khas": "Kulit bokong dan selangkangan bayi merah menyala akibat lembap dan gesekan popok, atau kulit bayi bruntusan setelah diberi minyak telon berlebihan.",
+      "kategori": "Iritasi Kulit Bayi"
+    },
+    {
+      "id": "TR16",
+      "nama": "Bahan Kimia Industri, Bangunan & Hobi",
+      "contoh_benda": [
+        "Semen basah",
+        "Cat minyak / tinner / pernis",
+        "Lem kayu",
+        "Cairan pembersih oli mesin"
+      ],
+      "senyawa_aktif": [
+        "Kromium heksavalen pada semen",
+        "Pelarut organik aromatik"
+      ],
+      "ciri_khas": "Kulit tangan atau kaki tukang bangunan menebal, retak-retak dalam, dan mengeras akibat paparan semen atau pelarut bertahun-tahun.",
+      "kategori": "Dermatitis Okupasional / Kerja"
+    }
+  ],
+  "conditions_explained": [
+    {
+      "nama": "Dermatitis Kontak Alergi",
+      "penjelasan_awam": "Reaksi kulit yang muncul karena sistem kekebalan tubuh kamu salah mengenali zat tertentu sebagai 'musuh berbahaya'. Begitu kulit tersensitisasi, paparan zat tersebut sedikit saja di masa depan akan memicu gatal hebat dan ruam kemerahan.",
+      "waktu_muncul": "Tertunda, biasanya baru muncul 1 sampai 3 hari (24-72 jam) setelah terkena zat tersebut.",
+      "lokasi_ruam": "Awalnya di area yang menyentuh benda, tetapi lama-kelamaan bisa merembet ke area kulit sekitarnya.",
+      "contoh_klasik": "Gatal berhari-hari setelah memakai jam tangan nikel atau anting imitasi."
+    },
+    {
+      "nama": "Dermatitis Kontak Iritan",
+      "penjelasan_awam": "Bukan reaksi alergi imunologis, melainkan murni kerusakan lapisan minyak pelindung kulit akibat zat kimia keras atau gesekan berulang. Siapa pun bisa mengalaminya jika terpapar bahan tersebut dalam jumlah atau durasi cukup.",
+      "waktu_muncul": "Bisa langsung terasa dalam hitungan menit (pada bahan keras seperti pemutih) atau berkembang pelan-pelan setelah berminggu-minggu terpapar sabun cuci.",
+      "lokasi_ruam": "Hanya di bagian kulit yang benar-benar kena cairan (misalnya telapak tangan dan jari).",
+      "contoh_klasik": "Tangan perih, mengelupas, dan pecah-pecah retak akibat mencuci piring dan pakaian setiap hari."
+    },
+    {
+      "nama": "Biduran (Urtikaria)",
+      "penjelasan_awam": "Kondisi di mana zat histamin di dalam kulit dilepaskan secara mendadak, menyebabkan pembuluh darah melebar dan bocor sehingga muncul bentol-bentol merah lebar yang sangat gatal.",
+      "waktu_muncul": "Sangat cepat, biasanya 15 menit sampai 2 jam setelah makan makanan pemicu atau terkena cuaca dingin.",
+      "lokasi_ruam": "Bisa muncul di mana saja dan bentolnya berpindah-pindah. Setiap satu bentol biasanya hilang dalam waktu kurang dari 24 jam tanpa membekas.",
+      "contoh_klasik": "Badan bentol-bentol merah gatal setelah makan udang atau saat terkena udara malam yang sangat dingin."
+    }
+  ]
+}
